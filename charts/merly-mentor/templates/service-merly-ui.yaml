@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "merlyUi.service.name" . }}
+spec:
+  type: {{ if and .Values.merlyUi .Values.merlyUi.service .Values.merlyUi.service.type }}{{ .Values.merlyUi.service.type }}{{ else }}ClusterIP{{ end }}
+  ports:
+    - port: {{ if and .Values.merlyUi .Values.merlyUi.service .Values.merlyUi.service.port }}{{ .Values.merlyUi.service.port }}{{ else }}3000{{ end }}
+      targetPort: {{ if and .Values.merlyUi .Values.merlyUi.containerPort }}{{ .Values.merlyUi.containerPort }}{{ else }}3000{{ end }}
+  selector:
+    {{- include "merlyUi.labels" . | nindent 4 }}

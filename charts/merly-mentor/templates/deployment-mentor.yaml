@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "mentor.deployment.name" . }}
+  labels:
+    {{- include "mentor.labels" . | nindent 4 }}
+spec:
+  replicas: {{ if and .Values.mentor .Values.mentor.replicaCount }}{{ .Values.mentor.replicaCount }}{{ else }}1{{ end }}
+  selector:
+    matchLabels:
+      {{- include "mentor.labels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "mentor.labels" . | nindent 8 }}
+    spec:
+      initContainers:
+        # Init container for merly-models
+        - name: merly-models-init
+          image: {{ include "mentor.deployment.initContainers.merlyModelInit.image" . }}
+          volumeMounts:
+            - mountPath: /app/.models-copy
+              name: models-data
+          command: ["/bin/sh", "-c"]
+          args:
+            - cp -r /app/.models/* /app/.models-copy
+
+        # Init container for merly-assets
+        - name: merly-assets-init
+          image: {{ include "mentor.deployment.initContainers.merlyAssetsInit.image" . }}
+          volumeMounts:
+            - mountPath: /app/.assets-copy
+              name: assets-data
+          command: ["/bin/sh", "-c"]
+          args:
+            - cp -r /app/.assets/* /app/.assets-copy
+
+      containers:
+        - name: merly-mentor
+          image: {{ include "mentor.deployment.image"  . }}
+          ports:
+            - containerPort: {{ if and .Values.mentor .Values.mentor.containerPort }}{{ .Values.mentor.containerPort }}{{ else }}4200{{ end }}
+          env:
+            - name: REGISTRATION_KEY
+              value: {{ if and .Values.global .Values.global.registrationKey -}}{{ .Values.global.registrationKey }}{{- else -}}{{ fail (print "A valid registration key is required! Ensure .Values.global.registrationKey is properly set.") }}{{- end }}
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          volumeMounts:
+            - mountPath: /merly/.mentor
+              name: mentor-data
+            - mountPath: /merly/.models
+              name: models-data
+            - mountPath: /merly/.assets
+              name: assets-data
+
+      volumes:
+        - name: mentor-data
+          persistentVolumeClaim:
+            claimName: {{ if and .Values.global .Values.global.persistence .Values.global.persistence.pvcNameOverride }}{{ .Values.global.persistence.pvcNameOverride }}{{ else }}merly-mentor-pvc{{ end }}
+        - name: models-data
+          emptyDir: {}
+        - name: assets-data
+          emptyDir: {}
+

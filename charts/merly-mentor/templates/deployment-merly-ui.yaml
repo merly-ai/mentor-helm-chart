@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "merlyUi.deployment.name" . }} 
+  labels:
+    {{- include "merlyUi.labels" . | nindent 4 }}
+spec:
+  replicas: {{ if and .Values.merlyUi .Values.merlyUi.replicaCount }}{{ .Values.merlyUi.replicaCount }}{{ else }}1{{ end }}
+  selector:
+    matchLabels:
+      {{- include "merlyUi.labels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "merlyUi.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: merly-ui
+          image: {{ include "merlyUi.deployment.image" . }}
+          ports:
+            - containerPort: {{ if and .Values.merlyUi .Values.merlyUi.containerPort }}{{ .Values.merlyUi.containerPort }}{{ else }}3000{{ end }}
+          env:
+            - name: MERLY_AI_BRIDGE_URL
+              value: "http://{{ include "bridge.service.name" . }}:{{ if and .Values.bridge .Values.bridge.service .Values.bridge.service.port }}{{ .Values.bridge.service.port }}{{ else }}8080{{ end }}/"
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: "512Mi"
+            requests:
+              cpu: "0.1"
+              memory: "256Mi"

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "bridge.service.name" . }}
+spec:
+  type: {{ if and .Values.bridge .Values.bridge.service .Values.bridge.service.type }}{{ .Values.bridge.service.type }}{{ else }}ClusterIP{{ end }}
+  ports:
+    - port: {{ if and .Values.bridge .Values.bridge.service .Values.bridge.service.port }}{{ .Values.bridge.service.port }}{{ else }}8080{{ end }}
+      targetPort: {{ if and .Values.bridge  .Values.bridge.containerPort }}{{ .Values.bridge.containerPort }}{{ else }}8080{{ end }}
+  selector:
+    {{- include "bridge.labels" . | nindent 4 }}

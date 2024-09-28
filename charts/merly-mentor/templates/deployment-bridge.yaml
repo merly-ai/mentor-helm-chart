@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "bridge.deployment.name" . }}
+  labels:    
+    {{- include "bridge.labels" . | nindent 6 }}
+spec:
+  replicas: {{ if and .Values.bridge .Values.bridge.replicaCount }}{{ .Values.bridge.replicaCount }}{{ else }}1{{ end }}
+  selector:
+    matchLabels:
+      {{- include "bridge.labels" . | nindent 8 }}
+  template:
+    metadata:
+      labels:
+        {{- include "bridge.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: bridge-container
+          image: {{ include "bridge.deployment.image" . }}
+          ports:
+            - containerPort: {{ if and .Values.bridge .Values.bridge.containerPort }}{{ .Values.bridge.containerPort }}{{ else }}8080{{ end }}
+          env:
+            - name: MERLY_AI_DAEMON_URL
+              value: "http://{{ include "mentor.service.name" . }}:{{ if and .Values.mentor .Values.mentor.service .Values.mentor.service.port }}{{ .Values.mentor.service.port }}{{ else }}4200{{ end }}/"
+          volumeMounts:
+            - mountPath: /merly/.mentor
+              name: mentor-data
+          resources:
+            limits:
+              cpu: {{ if and .Values.bridge .Values.bridge.resources .Values.bridge.resources.limits .Values.bridge.resources.limits.cpu }}{{ .Values.bridge.resources.limits.cpu }}{{ else }}"1"{{ end }}
+              memory: {{ if and .Values.bridge .Values.bridge.resources .Values.bridge.resources.limits .Values.bridge.resources.limits.memory }}{{ .Values.bridge.resources.limits.memory }}{{ else }}"512Mi"{{ end }}
+      volumes:
+        - name: mentor-data
+          persistentVolumeClaim:
+            claimName: {{ if and .Values.global .Values.persistence .Values.global.persistence.pvcNameOverride }}{{ .Values.global.persistence.pvcNameOverride }}{{ else }}merly-mentor-pvc{{ end }}

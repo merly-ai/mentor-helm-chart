@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "mentor.service.name" . }}
+spec:
+  type: {{ if and .Values.mentor .Values.mentor.service .Values.mentor.service.type }}{{ .Values.mentor.service.type }}{{ else }}ClusterIP{{ end }}
+  ports:
+    - port: {{ if and .Values.mentor .Values.mentor.service .Values.mentor.service.port }}{{ .Values.mentor.service.port }}{{ else }}4200{{ end }}
+      targetPort: {{ if and .Values.mentor .Values.mentor.containerPort }}{{ .Values.mentor.containerPort }}{{ else }}4200{{ end }}
+  selector:
+    {{- include "mentor.labels" . | nindent 4 }}
