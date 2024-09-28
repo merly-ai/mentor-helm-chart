@@ -21,3 +21,5 @@ helm search repo merly-mentor
 ```
 
 This command will list all the charts available in the `merly-mentor` repository.
+
+## Installation:
