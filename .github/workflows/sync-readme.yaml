@@ -1,3 +1,4 @@
+name: Update Documentation
 on:
   push:
     branches:
@@ -25,4 +26,3 @@ jobs:
           git add README.md
           git commit --signoff -m "Sync README from main"
           git push
-          
