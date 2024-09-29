@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="icon" href="https://www.merly.ai/favicon.ico" type="image/x-icon">
   </head>
   <body><script type="module">const GITHUB_CORNERS_TEMPLATE = document.createElement("template");
 GITHUB_CORNERS_TEMPLATE.innerHTML = `
@@ -180,6 +181,35 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span></code><div onclick="copied(this)" data-code="helm delete my-release
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <p>The command removes all the Kubernetes components associated with the chart and deletes the release.</p>
+    <h2 id="example"><a class="anchor" aria-hidden="true" tabindex="-1" href="#example"><span class="octicon octicon-link"></span></a>Example</h2>
+    <ul>
+      <li>To run Merly Mentor in your Kubernetes cluster, a valid license key is required. You can obtain a free 30-day trial license by signing up <a href="https://www.merly.ai/early-access">here</a>.</li>
+    </ul>
+    <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">helm <span class="token function">install</span> my-release merly-mentor/merly-mentor <span class="token parameter variable">--set</span> <span class="token assign-left variable">global.registrationKey</span><span class="token operator">=</span><span class="token string">"your-registration-key-value"</span>
+</span></code><div onclick="copied(this)" data-code="helm install my-release merly-mentor/merly-mentor --set global.registrationKey=&#x22;your-registration-key-value&#x22;
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h4 id="serve-merly-mentor-using-ingress"><a class="anchor" aria-hidden="true" tabindex="-1" href="#serve-merly-mentor-using-ingress"><span class="octicon octicon-link"></span></a>Serve Merly Mentor using ingress</h4>
+    <pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line line-number" line="1"><span class="token key atrule">global</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="2">  <span class="token key atrule">registrationKey</span><span class="token punctuation">:</span> <span class="token string">"your-registration-key-value"</span>
+</span><span class="code-line line-number" line="3"><span class="token key atrule">ingress</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="4">  <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</span><span class="code-line line-number" line="5">  <span class="token key atrule">className</span><span class="token punctuation">:</span> <span class="token string">"nginx"</span>
+</span><span class="code-line line-number" line="6">  <span class="token key atrule">hosts</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="7">    <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> chart<span class="token punctuation">-</span>example.local
+</span><span class="code-line line-number" line="8">      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="9">        <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+</span><span class="code-line line-number" line="10">          <span class="token key atrule">pathType</span><span class="token punctuation">:</span> ImplementationSpecific
+</span></code><div onclick="copied(this)" data-code="global:
+  registrationKey: &#x22;your-registration-key-value&#x22;
+ingress:
+  enabled: true
+  className: &#x22;nginx&#x22;
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h2 id="configuration"><a class="anchor" aria-hidden="true" tabindex="-1" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
     <table>
       <thead>
