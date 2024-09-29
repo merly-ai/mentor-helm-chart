@@ -23,6 +23,7 @@ jobs:
           favicon: https://www.merly.ai/favicon.ico
           title: Merly Mentor Helm Chart
           description: Helm Chart for Merly Mentor
+          markdown-style-theme: light
           style: |
             body {
               font-family: Arial, sans-serif;
