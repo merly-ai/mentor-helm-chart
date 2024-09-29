@@ -35,7 +35,6 @@ To uninstall/delete the `my-release` deployment:
 ```bash
 helm delete my-release
 ```
-
 The command removes all the Kubernetes components associated with the chart and deletes the release.
 
 ## Configuration
