@@ -15,11 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Converts Markdown to HTML
-        uses: jaywcjlove/markdown-to-html-cli@main
+        uses: jaywcjlove/markdown-to-html-cli@v4.1.0
         with:
           source: README.md
           output: index.html
           github-corners: https://github.com/merly-ai/mentor-helm-chart
+          favicon: https://www.merly.ai/favicon.ico
       - run: |
           cp -f index.html ${{ runner.temp }}/index.html
       - uses: actions/checkout@v4

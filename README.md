@@ -37,8 +37,29 @@ helm delete my-release
 ```
 The command removes all the Kubernetes components associated with the chart and deletes the release.
 
-## Configuration
+## Example
+- To run Merly Mentor in your Kubernetes cluster, a valid license key is required. You can obtain a free 30-day trial license by signing up [here](https://www.merly.ai/early-access).
 
+```bash
+helm install my-release merly-mentor/merly-mentor --set global.registrationKey="your-registration-key-value"
+```
+
+#### Serve Merly Mentor using ingress
+```yaml
+global:
+  registrationKey: "your-registration-key-value"
+ingress:
+  enabled: true
+  className: "nginx"
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+```
+
+
+## Configuration
 | Parameter                                        | Description                                         | Default                          |
 |--------------------------------------------------|-----------------------------------------------------|----------------------------------|
 | `nameOverride`                                   | Override the chart name                             | `""`                             |
