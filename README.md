@@ -58,6 +58,7 @@ ingress:
           pathType: ImplementationSpecific
 ```
 
+
 ## Configuration
 | Parameter                                        | Description                                         | Default                          |
 |--------------------------------------------------|-----------------------------------------------------|----------------------------------|
