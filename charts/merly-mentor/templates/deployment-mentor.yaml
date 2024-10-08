@@ -45,11 +45,11 @@ spec:
               value: {{ if and .Values.global .Values.global.registrationKey -}}{{ .Values.global.registrationKey }}{{- else -}}{{ fail (print "A valid registration key is required! Ensure .Values.global.registrationKey is properly set.") }}{{- end }}
           resources:
             requests:
-              memory: "64Mi"
-              cpu: "250m"
-            limits:
-              memory: "128Mi"
+              memory: "512Mi"
               cpu: "500m"
+            limits:
+              memory: "16Gi"
+              cpu: "4"
           volumeMounts:
             - mountPath: /merly/.mentor
               name: mentor-data
