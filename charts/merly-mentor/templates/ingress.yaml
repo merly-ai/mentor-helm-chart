@@ -1,7 +1,7 @@
 {{- if and .Values.ingress .Values.ingress.enabled -}}
 {{- $fullName := include "merlyUi.service.name" . -}}
 
-{{- $svcPort := 3000 -}}  # Default value set first
+{{- $svcPort := 3000 -}}
 
 {{- if and .Values.merlyUi .Values.merlyUi.service .Values.merlyUi.service.port -}}
   {{- $svcPort = .Values.merlyUi.service.port | default 3000 -}}
