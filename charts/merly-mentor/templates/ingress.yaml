@@ -1,7 +1,12 @@
-
 {{- if and .Values.ingress .Values.ingress.enabled -}}
 {{- $fullName := include "merlyUi.service.name" . -}}
-{{- $svcPort :=  .Values.merlyUi.service.port -}}
+
+{{- $svcPort := 3000 -}}  # Default value set first
+
+{{- if and .Values.merlyUi .Values.merlyUi.service .Values.merlyUi.service.port -}}
+  {{- $svcPort = .Values.merlyUi.service.port | default 3000 -}}
+{{- end -}}
+
 {{- if and .Values.ingress.className (not (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion)) }}
   {{- if not (hasKey .Values.ingress.annotations "kubernetes.io/ingress.class") }}
   {{- $_ := set .Values.ingress.annotations "kubernetes.io/ingress.class" .Values.ingress.className}}
