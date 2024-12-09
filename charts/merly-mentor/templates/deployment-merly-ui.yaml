@@ -29,3 +29,11 @@ spec:
             requests:
               cpu: "0.1"
               memory: "256Mi"
+          volumeMounts:
+            - mountPath: /app/.logs
+              name: shared-logs
+      volumes:
+        - name: shared-logs
+          persistentVolumeClaim:
+            claimName: {{ if and .Values.global .Values.global.logs .Values.global.logs.pvcNameOverride }}{{ .Values.global.logs.pvcNameOverride }}{{ else }}merly-logs-pvc{{ end }}
+

@@ -6,6 +6,10 @@ global:
   #   storageClass: "" # optional - default "default"
   #   size: "4Gi" # optional - default 4Gi
   #   pvcNameOverride: "" # optional - default merly-mentor-pvc
+  # logs:
+  #   pvcNameOverride: "custom-logs-pvc" # Optional
+  #   storageClass: "nfs"               # Adjust to your storage class
+  #   size: "5Gi"                       # Optional, override default size  
 
 bridge:
   # replicaCount: 1 # optional - default 1

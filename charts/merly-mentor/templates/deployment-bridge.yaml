@@ -25,11 +25,17 @@ spec:
           volumeMounts:
             - mountPath: /merly/.mentor
               name: mentor-data
+            - mountPath: /merly/.logs
+              name: shared-logs
           resources:
             limits:
               cpu: {{ if and .Values.bridge .Values.bridge.resources .Values.bridge.resources.limits .Values.bridge.resources.limits.cpu }}{{ .Values.bridge.resources.limits.cpu }}{{ else }}"1"{{ end }}
               memory: {{ if and .Values.bridge .Values.bridge.resources .Values.bridge.resources.limits .Values.bridge.resources.limits.memory }}{{ .Values.bridge.resources.limits.memory }}{{ else }}"512Mi"{{ end }}
       volumes:
+        - name: shared-logs
+          persistentVolumeClaim:
+            claimName: {{ if and .Values.global .Values.global.logs .Values.global.logs.pvcNameOverride }}{{ .Values.global.logs.pvcNameOverride }}{{ else }}merly-logs-pvc{{ end }}
         - name: mentor-data
           persistentVolumeClaim:
             claimName: {{ if and .Values.global .Values.persistence .Values.global.persistence.pvcNameOverride }}{{ .Values.global.persistence.pvcNameOverride }}{{ else }}merly-mentor-pvc{{ end }}
+            
