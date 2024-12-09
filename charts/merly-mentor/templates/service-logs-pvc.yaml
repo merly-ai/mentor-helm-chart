@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ if and .Values.global .Values.global.logs .Values.global.logs.pvcNameOverride }}{{ .Values.global.logs.pvcNameOverride }}{{ else }}merly-logs-pvc{{ end }}
+spec:
+  {{- if and .Values.global .Values.global.logs .Values.global.logs.storageClass }}
+  storageClassName: {{ .Values.global.logs.storageClass }}
+  {{- end }}
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      {{- if and .Values.global .Values.global.logs .Values.global.logs.size }}
+      storage: {{ .Values.global.logs.size }}
+      {{- else }}
+      storage: 2Gi
+      {{- end }}
