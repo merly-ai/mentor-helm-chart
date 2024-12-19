@@ -57,13 +57,17 @@ spec:
               name: models-data
             - mountPath: /merly/.assets
               name: assets-data
+            - mountPath: /merly/.logs
+              name: logs-data
 
       volumes:
         - name: mentor-data
           persistentVolumeClaim:
             claimName: {{ if and .Values.global .Values.global.persistence .Values.global.persistence.pvcNameOverride }}{{ .Values.global.persistence.pvcNameOverride }}{{ else }}merly-mentor-pvc{{ end }}
+        - name: logs-data
+          persistentVolumeClaim:
+            claimName: {{ if and .Values.global .Values.global.logsPersistence .Values.global.logsPersistence.pvcNameOverride }}{{ .Values.global.logsPersistence.pvcNameOverride }}{{ else }}merly-logs-pvc{{ end }}
         - name: models-data
           emptyDir: {}
         - name: assets-data
           emptyDir: {}
-
