@@ -20,17 +20,33 @@ After adding the repository, you can search for the available Helm charts using:
 helm search repo merly-mentor
 ```
 
-This command will list all the charts available in the `merly-mentor` repository.
+## Installation
 
-## Installing the Chart
-To install the chart with the release name `my-release`:
+### Standard Installation
 
 ```bash
 helm install my-release merly-mentor/merly-mentor
 ```
 
-## Uninstalling the Chart
-To uninstall/delete the `my-release` deployment:
+### On kind or minikube
+
+1. Install NFS server:
+   ```bash
+   helm repo add nfs-server https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+   helm repo update
+   helm install nfs-server nfs-server/nfs-server-k8s
+   ```
+
+2. Install Merly Mentor with NFS storage:
+   ```bash
+   helm install my-release merly-mentor/merly-mentor \
+     --set logsPersistence.storageClass=nfs \
+     --set persistence.storageClass=nfs
+   ```
+
+### Uninstallation
+
+To remove the deployment:
 
 ```bash
 helm delete my-release
