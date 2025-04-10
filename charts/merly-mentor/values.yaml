@@ -2,7 +2,6 @@
 
 global:
   registrationKey: ""
-  kubernetesProvider: ""
   # persistence:
   #   storageClass: "" # optional - default "default"
   #   size: "4Gi" # optional - default 4Gi
