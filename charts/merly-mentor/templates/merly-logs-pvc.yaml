@@ -1,23 +1,17 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ if and .Values.global .Values.global.logsPersistence .Values.global.logsPersistence.pvcNameOverride }}
-    {{ .Values.global.logsPersistence.pvcNameOverride }}
-  {{ else }}
-    merly-logs-pvc
-  {{ end }}
+  name: {{ if and .Values.global .Values.global.logsPersistence .Values.global.logsPersistence.pvcNameOverride }}{{ .Values.global.logsPersistence.pvcNameOverride }}{{ else }}merly-logs-pvc{{ end }}
 spec:
-  {{- if or (eq .Values.global.kubernetesProvider "minikube") (eq .Values.global.kubernetesProvider "kind") }}
-  storageClassName: nfs
-  {{- else if and .Values.global .Values.global.logsPersistence .Values.global.logsPersistence.storageClass }}
+  {{- if and .Values.global .Values.global.logsPersistence .Values.global.logsPersistence.storageClass }}
   storageClassName: {{ .Values.global.logsPersistence.storageClass }}
   {{- end }}
   accessModes:
     - ReadWriteMany
   resources:
     requests:
-      storage: {{ if and .Values.global .Values.global.logsPersistence .Values.global.logsPersistence.size }}
-      {{ .Values.global.logsPersistence.size }}
-      {{ else }}
-      4Gi
-      {{ end }}
+      {{- if and .Values.global .Values.global.logsPersistence . .Values.global.logsPersistence.size }}
+      storage: {{ .Values.global.logsPersistence.size }}
+      {{- else }}
+      storage: 4Gi
+      {{- end }}
