@@ -93,4 +93,3 @@ ingress:
 | `ingress.hosts[0].paths[0].pathType`             | Path type for ingress                               | `ImplementationSpecific`         |
 | `ingress.tls[0].secretName`                      | TLS secret name for ingress                         | `chart-example-tls`              |
 | `ingress.tls[0].hosts[0]`                        | TLS hosts for ingress                               | `chart-example.local`            |
-

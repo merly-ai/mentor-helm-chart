@@ -29,7 +29,7 @@ mentor:
   # replicaCount: 1
   image:
     repository: merlyai/merly-mentor-daemon
-    tag: v0.5.0
+    tag: v0.6.0
   # containerPort: 4200 # default 4200
   initContainers:
     merlyModelsInit:
