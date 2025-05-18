@@ -29,6 +29,12 @@ To install the chart with the release name `my-release`:
 helm install my-release merly-mentor/merly-mentor
 ```
 
+> **Note for Minikube Users**: If you're running this chart in Minikube, you need to ensure that Minikube has at least 4 CPUs allocated. You can set this when starting Minikube using:
+> ```bash
+> minikube start --cpus 4
+> ```
+> Or if Minikube is already running, you can stop it and restart with the new CPU configuration.
+
 ## Uninstalling the Chart
 To uninstall/delete the `my-release` deployment:
 
@@ -69,12 +75,12 @@ ingress:
 | `bridge.replicaCount`                            | Number of replicas for the bridge service (optional)| `1`                              |
 | `bridge.nameOverride`                            | Override the name for bridge service (optional)     | `"merly-bridge"`                 |
 | `bridge.image.repository`                        | Repository for the bridge image                     | `merlyai/merly-mentor-bridge`    |
-| `bridge.image.tag`                               | Tag for the bridge image                            | `v0.1.0`                         |
+| `bridge.image.tag`                               | Tag for the bridge image                            | `v0.5.0`                         |
 | `bridge.containerPort`                           | Container port for the bridge service (default)     | `8080`                           |
 | `mentor.nameOverride`                            | Override the name for mentor service (optional)     | `"merly-mentor"`                 |
 | `mentor.replicaCount`                            | Number of replicas for the mentor service           | `1`                              |
 | `mentor.image.repository`                        | Repository for the mentor image                     | `merlyai/merly-mentor-daemon`    |
-| `mentor.image.tag`                               | Tag for the mentor image                            | `v0.4.19`                        |
+| `mentor.image.tag`                               | Tag for the mentor image                            | `v0.6.0`                         |
 | `mentor.containerPort`                           | Container port for the mentor service               | `4200`                           |
 | `mentor.initContainers.merlyModelsInit.image.repository` | Repository for models init container         | `merlyai/merly-mentor-models`    |
 | `mentor.initContainers.merlyModelsInit.image.tag`        | Tag for models init container                | `v2.0.0`                         |
@@ -83,7 +89,7 @@ ingress:
 | `merlyUi.replicaCount`                           | Number of replicas for the UI service               | `1`                              |
 | `merlyUi.nameOverride`                           | Override the name for UI service (optional)         | `"merly-ui"`                     |
 | `merlyUi.image.repository`                       | Repository for the UI image                         | `merlyai/merly-mentor-ui`        |
-| `merlyUi.image.tag`                              | Tag for the UI image                                | `v0.1.0`                         |
+| `merlyUi.image.tag`                              | Tag for the UI image                                | `v0.5.0`                         |
 | `merlyUi.containerPort`                          | Container port for the UI service                   | `3000`                           |
 | `ingress.enabled`                                | Enable or disable ingress                           | `false`                          |
 | `ingress.className`                              | Class name for ingress                              | `""`                             |
@@ -93,3 +99,4 @@ ingress:
 | `ingress.hosts[0].paths[0].pathType`             | Path type for ingress                               | `ImplementationSpecific`         |
 | `ingress.tls[0].secretName`                      | TLS secret name for ingress                         | `chart-example-tls`              |
 | `ingress.tls[0].hosts[0]`                        | TLS hosts for ingress                               | `chart-example.local`            |
+

@@ -7,7 +7,7 @@ spec:
   storageClassName: {{ .Values.global.persistence.storageClass }}
   {{- end }}
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       {{- if and .Values.global .Values.global.persistence . .Values.global.persistence.size }}
