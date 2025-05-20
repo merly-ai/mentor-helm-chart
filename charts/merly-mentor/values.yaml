@@ -12,7 +12,7 @@ bridge:
   # nameOverride: ""  # optional - default "merly-bridge"
   image:
     repository: merlyai/merly-mentor-bridge
-    tag: v0.5.0
+    tag: Test_latest
   # containerPort: 8080 # default 8080
   # resources:
   #   limits:
@@ -29,7 +29,7 @@ mentor:
   # replicaCount: 1
   image:
     repository: merlyai/merly-mentor-daemon
-    tag: v0.6.0
+    tag: Test_latest
   # containerPort: 4200 # default 4200
   initContainers:
     merlyModelsInit:
@@ -50,7 +50,7 @@ merlyUi:
   # nameOverride: "" # optional - default "merly-ui"
   image:
     repository: merlyai/merly-mentor-ui
-    tag: v0.5.0
+    tag: Test_latest
   # containerPort: 3000 # default 3000
   service:
     # nameOverride: "" optional - default "merly-ui"
