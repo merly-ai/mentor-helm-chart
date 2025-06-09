@@ -108,22 +108,9 @@ merly.app.name: mentor
 {{- end }}
 {{- end }}
 
-{{- define "mentor.deployment.initContainers.merlyModelInit.image" -}}
-{{- if and .Values.mentor .Values.mentor.initContainers .Values.mentor.initContainers.merlyModelsInit .Values.mentor.initContainers.merlyModelsInit.image .Values.mentor.initContainers.merlyModelsInit.image.repository .Values.mentor.initContainers.merlyModelsInit.image.tag -}}
-  "{{ .Values.mentor.initContainers.merlyModelsInit.image.repository }}:{{ .Values.mentor.initContainers.merlyModelsInit.image.tag }}"
-{{- else -}}
-  {{- fail "A valid repository and tag are required! Ensure .Values.mentor.initContainers.merlyModelsInit.image.repository, and .Values.mentor.initContainers.merlyModelsInit.image.tag are properly set." -}}
-{{- end -}}
-{{- end -}}
 
 
-{{- define "mentor.deployment.initContainers.merlyAssetsInit.image" -}}
-{{- if and .Values.mentor .Values.mentor.initContainers .Values.mentor.initContainers.merlyAssetsInit .Values.mentor.initContainers.merlyAssetsInit.image .Values.mentor.initContainers.merlyAssetsInit.image.repository .Values.mentor.initContainers.merlyAssetsInit.image.tag -}}
-  "{{ .Values.mentor.initContainers.merlyAssetsInit.image.repository }}:{{ .Values.mentor.initContainers.merlyAssetsInit.image.tag }}"
-{{- else -}}
-  {{- fail "A valid repository and tag are required! Ensure .Values.mentor.initContainers.merlyAssetsInit.image.repository, and .Values.mentor.initContainers.merlyAssetsInit.image.tag are properly set." -}}
-{{- end -}}
-{{- end -}}
+
 
 
 {{- define "mentor.deployment.image" -}}

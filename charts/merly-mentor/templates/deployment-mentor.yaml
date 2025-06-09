@@ -14,26 +14,7 @@ spec:
       labels:
         {{- include "mentor.labels" . | nindent 8 }}
     spec:
-      initContainers:
-        # Init container for merly-models
-        - name: merly-models-init
-          image: {{ include "mentor.deployment.initContainers.merlyModelInit.image" . }}
-          volumeMounts:
-            - mountPath: /app/.models-copy
-              name: models-data
-          command: ["/bin/sh", "-c"]
-          args:
-            - cp -r /app/.models/* /app/.models-copy
 
-        # Init container for merly-assets
-        - name: merly-assets-init
-          image: {{ include "mentor.deployment.initContainers.merlyAssetsInit.image" . }}
-          volumeMounts:
-            - mountPath: /app/.assets-copy
-              name: assets-data
-          command: ["/bin/sh", "-c"]
-          args:
-            - cp -r /app/.assets/* /app/.assets-copy
 
       containers:
         - name: merly-mentor
@@ -42,22 +23,34 @@ spec:
             - containerPort: {{ if and .Values.mentor .Values.mentor.containerPort }}{{ .Values.mentor.containerPort }}{{ else }}4200{{ end }}
           env:
             - name: REGISTRATION_KEY
-              value: {{ if and .Values.global .Values.global.registrationKey -}}{{ .Values.global.registrationKey }}{{- else -}}{{ fail (print "A valid registration key is required! Ensure .Values.global.registrationKey is properly set.") }}{{- end }}
+              value: {{ if and .Values.global .Values.global.registrationKey -}}{{ .Values.global.registrationKey }}{{- else -}}{{ fail (print "A valid registration key is required! Ensure .Values.global.registrationKey is properly set.") }}{{ end }}
           resources:
             requests:
-              memory: "512Mi"
-              cpu: "500m"
+              memory: "4Gi"
+              cpu: "2"
             limits:
               memory: "16Gi"
               cpu: "4"
           volumeMounts:
-            - mountPath: /merly/.mentor
+            - mountPath: /app/.mentor
               name: mentor-data
-            - mountPath: /merly/.models
+            - mountPath: /app/.models
               name: models-data
-            - mountPath: /merly/.assets
+            - mountPath: /app/.assets
               name: assets-data
-            - mountPath: /merly/.logs
+            - mountPath: /app/.logs
+              name: logs-data
+        - name: bridge-container
+          image: {{ include "bridge.deployment.image" . }}
+          ports:
+            - containerPort: {{ if and .Values.bridge .Values.bridge.containerPort }}{{ .Values.bridge.containerPort }}{{ else }}8080{{ end }}
+          env:
+            - name: MERLY_AI_DAEMON_URL
+              value: "http://{{ include "mentor.service.name" . }}:{{ if and .Values.mentor .Values.mentor.service .Values.mentor.service.port }}{{ .Values.mentor.service.port }}{{ else }}4200{{ end }}/"
+          volumeMounts:
+            - mountPath: /app/.mentor
+              name: mentor-data
+            - mountPath: /app/.logs
               name: logs-data
 
       volumes:
