@@ -52,7 +52,7 @@ merlyUi:
   # nameOverride: "" # optional - default "merly-ui"
   image:
     repository: merlyai/ui
-    tag: v0.0.1
+    tag: v0.7.2
   # containerPort: 3000 # default 3000
   service:
     # nameOverride: "" optional - default "merly-ui"
