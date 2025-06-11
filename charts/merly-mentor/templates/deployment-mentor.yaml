@@ -26,11 +26,11 @@ spec:
               value: {{ if and .Values.global .Values.global.registrationKey -}}{{ .Values.global.registrationKey }}{{- else -}}{{ fail (print "A valid registration key is required! Ensure .Values.global.registrationKey is properly set.") }}{{ end }}
           resources:
             requests:
-              memory: "4Gi"
-              cpu: "2"
+              memory: "8Gi"
+              cpu: "4"
             limits:
               memory: "16Gi"
-              cpu: "4"
+              cpu: "12"
           volumeMounts:
             - mountPath: /app/.mentor
               name: mentor-data
@@ -40,6 +40,7 @@ spec:
               name: assets-data
             - mountPath: /app/.logs
               name: logs-data
+              
         - name: bridge-container
           image: {{ include "bridge.deployment.image" . }}
           ports:

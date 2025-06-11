@@ -1,7 +1,7 @@
 # nameOverride: ""
 
 global:
-  registrationKey: "xxxx-yyyy-zzzz-nnnn"
+  registrationKey: "8PTB-FAJD-H54Z-SWPH"
   # persistence:
   #   storageClass: "" # optional - default "default"
   #   size: "4Gi" # optional - default 4Gi
@@ -12,7 +12,7 @@ bridge:
   # nameOverride: ""  # optional - default "merly-bridge"
   image:
     repository: merlyai/bridge
-    tag: v0.0.1
+    tag: v0.7.2
   # containerPort: 8080 # default 8080
   # resources:
   #   limits:
@@ -29,13 +29,15 @@ mentor:
   # replicaCount: 1
   image:
     repository: merlyai/mentor
-    tag: v0.0.3
+    pullPolicy: Always
+    tag: v0.7.3
+    resources:
+    limits:
+      cpu: "8"
+      memory: "16Gi"
   # containerPort: 4200 # default 4200
-  # initContainers:
-  #   merlyModelsInit:
-  #     image:
-  #       repository: merlyai/merly-mentor-models
-  #       tag: v2.0.0
+
+
   #   merlyAssetsInit:
   #     image:
   #       repository: merlyai/merly-mentor-assets
