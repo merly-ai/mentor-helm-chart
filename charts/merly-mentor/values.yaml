@@ -25,23 +25,14 @@ bridge:
   #   port: 8080 # default 8080
 
 mentor:
-  # nameOverride: "" # optioal - default "merly-mentor"
-  # replicaCount: 1
   image:
     repository: merlyai/mentor
     pullPolicy: Always
-    tag: v0.7.3
+    tag: v0.7.2
     resources:
     limits:
       cpu: "8"
       memory: "16Gi"
-  # containerPort: 4200 # default 4200
-
-
-  #   merlyAssetsInit:
-  #     image:
-  #       repository: merlyai/merly-mentor-assets
-  #       tag: v1.0.0
   # service:
   #   nameOverride: ""
   #   type: ClusterIP # default ClusterIP

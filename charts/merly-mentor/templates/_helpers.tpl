@@ -108,11 +108,6 @@ merly.app.name: mentor
 {{- end }}
 {{- end }}
 
-
-
-
-
-
 {{- define "mentor.deployment.image" -}}
 {{- if and .Values.mentor .Values.mentor.image .Values.mentor.image.repository .Values.mentor.image.tag -}}
   "{{ .Values.mentor.image.repository }}:{{ .Values.mentor.image.tag }}"
