@@ -1,7 +1,7 @@
 # nameOverride: ""
 
 global:
-  registrationKey: ""
+  registrationKey: "8PTB-FAJD-H54Z-SWPH"
   # persistence:
   #   storageClass: "" # optional - default "default"
   #   size: "4Gi" # optional - default 4Gi
@@ -28,11 +28,13 @@ mentor:
   image:
     repository: merlyai/mentor
     pullPolicy: Always
-    tag: v0.7.2
+    tag: v0.7.5
     resources:
     limits:
       cpu: "8"
       memory: "16Gi"
+  env:
+    mm_models_root: /data/.models/
   # service:
   #   nameOverride: ""
   #   type: ClusterIP # default ClusterIP
