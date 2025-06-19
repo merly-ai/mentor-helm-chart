@@ -1,7 +1,7 @@
 # nameOverride: ""
 
 global:
-  registrationKey: "8PTB-FAJD-H54Z-SWPH"
+  registrationKey: "XXXX-YYYY-ZZZZ-NNNN"
   # persistence:
   #   storageClass: "" # optional - default "default"
   #   size: "4Gi" # optional - default 4Gi
