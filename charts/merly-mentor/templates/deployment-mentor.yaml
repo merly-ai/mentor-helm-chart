@@ -14,8 +14,6 @@ spec:
       labels:
         {{- include "mentor.labels" . | nindent 8 }}
     spec:
-
-
       containers:
         - name: merly-mentor
           image: {{ include "mentor.deployment.image"  . }}
@@ -24,6 +22,11 @@ spec:
           env:
             - name: REGISTRATION_KEY
               value: {{ if and .Values.global .Values.global.registrationKey -}}{{ .Values.global.registrationKey }}{{- else -}}{{ fail (print "A valid registration key is required! Ensure .Values.global.registrationKey is properly set.") }}{{ end }}
+            {{- range $key, $value := .Values.mentor.env }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+            {{- end }}
+              
           resources:
             requests:
               memory: "8Gi"
@@ -40,6 +43,7 @@ spec:
               name: assets-data
             - mountPath: /app/.logs
               name: logs-data
+            
               
         - name: bridge-container
           image: {{ include "bridge.deployment.image" . }}
