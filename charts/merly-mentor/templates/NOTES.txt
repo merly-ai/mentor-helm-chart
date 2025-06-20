@@ -1,0 +1,53 @@
+
+Thank you for trying our Helm chart of Mentor!
+
+
+                        %%                        
+                       %*%                        
+                      %***%                       
+                      %****%                      
+                     %******%                     
+                    %*******#%                    
+                   %#********%                    
+                   %**********%                   
+                  %************%                  
+                 %**************%                 
+                %****************%                
+               @%****************%%               
+               %******************%               
+              %********************%              
+   %%%%%%#****%********************#****#%%%%%%   
+%***************%%*************#%****************%
+  %%*******************###********************%%  
+      %%%%%*****************************%%%%      
+       %+===+*   :=+*#%%%%%%##**=:  *====*%       
+       #=*=#+#       %******%       #*#=#=#       
+      %*#====:      *   +#   *      .===+##       
+       #%==+%      #    :=    *      #===%%       
+        %===       ## #    * #=       ==*%        
+         #=#   #    #=#..=  =*    +   #=#         
+         %%%= -#       ::*#.      #: *%#%         
+         %#**#**:  .             =**#**%%         
+        %#%%###**# #*        ** #***#%##%%        
+             %#*%##***      #**##%*#%             
+           %#**%***#%***  #**%#***%**#%           
+          %#***#*****#*#++#*#*****#****%@         
+         %##%#%*******#%==##*******%%#*#%         
+           %%#*********%==#*********%%%           
+            %#*********%==%*********#%            
+           %#**********%==%**********#%           
+           #***********#==#***********#           
+          %%***********%==%***********%%          
+             %%%%###%%##%#%%%%%%%#%%%             
+
+
+Merly Mentor supports 15 programming languages: 
+C, C++, Ruby, Python, Go, Rust, JavaScript, TypeScript, C#, Java, Objective-C, Swift, Fortran, PHP, and VHDL.
+Mentor is a powerful tool for engineering teams, it reduces bugs, surfaces meaningful patterns, and helps maintain a consistently high standard of code quality. 
+It also empowers leaders like you with visibility into the structure and health of your codebase, supporting better technical decision-making across teams and projects.
+
+As you begin exploring Mentor, please know that our team is here to ensure a smooth and valuable experience. 
+If you have any questions, encounter issues, or would like to learn more about Mentor’s capabilities; 
+Don’t hesitate to reach out, we’re just an email away. 
+
+Merly Support support@merly.ai
