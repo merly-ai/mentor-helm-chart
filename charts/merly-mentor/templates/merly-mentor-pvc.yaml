@@ -13,5 +13,5 @@ spec:
       {{- if and .Values.global .Values.global.persistence . .Values.global.persistence.size }}
       storage: {{ .Values.global.persistence.size }}
       {{- else }}
-      storage: 10Gi
+      storage: 16Gi
       {{- end }}
