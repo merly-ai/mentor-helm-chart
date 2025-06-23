@@ -25,6 +25,7 @@ merlyUi:
     repository: merlyai/ui
     tag: v0.7.2
   service:
+  
 ingress:
   enabled: false
   className: ""
