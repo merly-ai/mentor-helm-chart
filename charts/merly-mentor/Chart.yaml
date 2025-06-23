@@ -4,6 +4,7 @@ description: Helm chart for Merly Mentor
 type: application
 version: 1.0.13
 appVersion: "0.7.2"
+home: https://www.merly.ai/
 sources:
 - https://github.com/merly-ai/mentor-helm-chart
 
