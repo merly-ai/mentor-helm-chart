@@ -26,7 +26,10 @@ spec:
             - name: {{ $key }}
               value: {{ $value | quote }}
             {{- end }}
-              
+          args:
+            {{- range .Values.mentor.arguments }}
+            - {{ . | quote }}
+            {{- end }}
           resources:
             requests:
               memory: "4Gi"
