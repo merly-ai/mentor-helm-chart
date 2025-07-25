@@ -12,7 +12,7 @@ mentor:
   image:
     repository: merlyai/mentor
     pullPolicy: Always
-    tag: v0.10.2
+    tag: v0.10.1
     resources:
     limits:
       cpu: "8"
