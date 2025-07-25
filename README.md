@@ -1,5 +1,5 @@
 # Merly Mentor Kubernetes Helm Charts
-Thank you for trying our Helm chart of Mentor!
+#### Thank you for trying our Helm chart of Mentor!
 
 ## Usage:
 
@@ -13,11 +13,11 @@ You can add the `merly-mentor` Helm repository
 ```bash
 helm repo add merly-mentor https://charts.merly-mentor.ai
 ```
-then look for available charts
+Then look for available charts
 ```bash
 helm search repo merly-mentor
 ```
-and finally install the chart with a release name `mentor` (but really could be anything you prefer):
+And finally install the chart with a release name `mentor` (but really could be anything you prefer):
 ```bash
 helm install my-release merly-mentor/merly-mentor --set global.registrationKey="<replace-with-your-product-
 ```
@@ -33,30 +33,14 @@ The only caviat is you need to be in the right folder `charts/merly-mentor`
 To uninstall/delete the `my-release` deployment:
 
 ```bash
-helm delete my-release
+helm uninstall merly-mentor
 ```
 The command removes all the Kubernetes components associated with the chart and deletes the release.
 
 
-#### Serve Merly Mentor using ingress
-```yaml
-global:
-  registrationKey: "your-registration-key-value"
-
-
-ingress:
-  enabled: true
-  className: "nginx"
-  hosts:
-    - host: merly.local
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-```
-
 
 The code is offered as-is without any guarantees.
-
+<!-- 
 ## Configuration
 | Parameter                                        | Description                                         | Default                          |
 |--------------------------------------------------|-----------------------------------------------------|----------------------------------|
@@ -88,4 +72,4 @@ The code is offered as-is without any guarantees.
 | `ingress.hosts[0].paths[0].pathType`             | Path type for ingress                               | `ImplementationSpecific`         |
 | `ingress.tls[0].secretName`                      | TLS secret name for ingress                         | `merly-tls`                      |
 | `ingress.tls[0].hosts[0]`                        | TLS hosts for ingress                               | `merly.local`                    |
-
+ -->
