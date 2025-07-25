@@ -152,238 +152,70 @@ svg { z-index: 99; position: fixed; border: 0px; top: 0px; right: 0; }
     .wrapper > span + span { margin-left: .4rem; }
     `;s.appendChild(a)}i(t,e){this.dispatchEvent(new CustomEvent(t,{bubbles:true,composed:true,detail:e}))}}customElements.define("dark-mode",a);</script><div style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style" mode="light">
     <h1 id="merly-mentor-kubernetes-helm-charts"><a class="anchor" aria-hidden="true" tabindex="-1" href="#merly-mentor-kubernetes-helm-charts"><span class="octicon octicon-link"></span></a>Merly Mentor Kubernetes Helm Charts</h1>
-    <p>The code is offered as-is without any guarantees.</p>
+    <h4 id="thank-you-for-trying-our-helm-chart-of-mentor"><a class="anchor" aria-hidden="true" tabindex="-1" href="#thank-you-for-trying-our-helm-chart-of-mentor"><span class="octicon octicon-link"></span></a>Thank you for trying our Helm chart of Mentor!</h4>
     <h2 id="usage"><a class="anchor" aria-hidden="true" tabindex="-1" href="#usage"><span class="octicon octicon-link"></span></a>Usage:</h2>
     <h3 id="prerequisites"><a class="anchor" aria-hidden="true" tabindex="-1" href="#prerequisites"><span class="octicon octicon-link"></span></a>Prerequisites</h3>
-    <p>Ensure that <a href="https://helm.sh/">Helm</a> is installed on your system before proceeding. For installation instructions and an introduction to Helm, please refer to the <a href="https://helm.sh/docs/">Helm documentation</a>.</p>
+    <p>
+      This is a Helm char - you need to have Helm installed. For details on how to do that, please visit their website <a href="https://helm.sh/">Helm</a>
+      Additionally you will need a registration key which you can get through our early access website [Merly] (<a href="https://www.merly.ai/early-access">https://www.merly.ai/early-access</a>)
+    </p>
     <h3 id="adding-the-merly-mentor-helm-repository"><a class="anchor" aria-hidden="true" tabindex="-1" href="#adding-the-merly-mentor-helm-repository"><span class="octicon octicon-link"></span></a>Adding the Merly Mentor Helm Repository</h3>
-    <p>Once Helm is properly installed and configured, you can add the <code>merly-mentor</code> Helm repository by running the following command:</p>
+    <p>You can add the <code>merly-mentor</code> Helm repository</p>
     <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">helm repo <span class="token function">add</span> merly-mentor https://charts.merly-mentor.ai
 </span></code><div onclick="copied(this)" data-code="helm repo add merly-mentor https://charts.merly-mentor.ai
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-    <h3 id="searching-for-available-charts"><a class="anchor" aria-hidden="true" tabindex="-1" href="#searching-for-available-charts"><span class="octicon octicon-link"></span></a>Searching for Available Charts</h3>
-    <p>After adding the repository, you can search for the available Helm charts using:</p>
+    <p>Then look for available charts</p>
     <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">helm search repo merly-mentor
 </span></code><div onclick="copied(this)" data-code="helm search repo merly-mentor
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-    <p>This command will list all the charts available in the <code>merly-mentor</code> repository.</p>
-    <h2 id="installing-the-chart"><a class="anchor" aria-hidden="true" tabindex="-1" href="#installing-the-chart"><span class="octicon octicon-link"></span></a>Installing the Chart</h2>
-    <p>To install the chart with the release name <code>my-release</code>:</p>
-    <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">helm <span class="token function">install</span> my-release merly-mentor/merly-mentor
-</span></code><div onclick="copied(this)" data-code="helm install my-release merly-mentor/merly-mentor
+    <p>And finally install the chart with a release name <code>mentor</code> (but really could be anything you prefer):</p>
+    <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">helm <span class="token function">install</span> my-release merly-mentor/merly-mentor <span class="token parameter variable">--set</span> <span class="token assign-left variable">global.registrationKey</span><span class="token operator">=</span>"<span class="token operator">&#x3C;</span>replace-with-your-product-
+</span></code><div onclick="copied(this)" data-code="helm install my-release merly-mentor/merly-mentor --set global.registrationKey=&#x22;<replace-with-your-product-
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-    <blockquote>
-      <p><strong>Note for Minikube Users</strong>: If you're running this chart in Minikube, you need to ensure that Minikube has at least 4 CPUs allocated. You can set this when starting Minikube using:</p>
-      <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">minikube start <span class="token parameter variable">--cpus</span> <span class="token number">4</span>
-</span></code><div onclick="copied(this)" data-code="minikube start --cpus 4
+    <p>The alternative is to download or git clone the repositry and manually install the chart</p>
+    <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">helm <span class="token function">install</span> mentor ./ <span class="token parameter variable">--set</span> <span class="token assign-left variable">global.registrationKey</span><span class="token operator">=</span><span class="token string">"&#x3C;replace-with-your-product-key"</span>
+</span></code><div onclick="copied(this)" data-code="helm install mentor ./ --set global.registrationKey=&#x22;<replace-with-your-product-key&#x22;
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-      <p>Or if Minikube is already running, you can stop it and restart with the new CPU configuration.</p>
-    </blockquote>
+    <p>The only caviat is you need to be in the right folder <code>charts/merly-mentor</code></p>
     <h2 id="uninstalling-the-chart"><a class="anchor" aria-hidden="true" tabindex="-1" href="#uninstalling-the-chart"><span class="octicon octicon-link"></span></a>Uninstalling the Chart</h2>
     <p>To uninstall/delete the <code>my-release</code> deployment:</p>
-    <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">helm delete my-release
-</span></code><div onclick="copied(this)" data-code="helm delete my-release
+    <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">helm uninstall merly-mentor
+</span></code><div onclick="copied(this)" data-code="helm uninstall merly-mentor
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <p>The command removes all the Kubernetes components associated with the chart and deletes the release.</p>
-    <h2 id="example"><a class="anchor" aria-hidden="true" tabindex="-1" href="#example"><span class="octicon octicon-link"></span></a>Example</h2>
-    <p>To run Merly Mentor in your Kubernetes cluster, a valid license key is required. You can obtain a free 30-day trial license by signing up for an early access account <a href="https://www.merly.ai/early-access">here</a>.</p>
-    <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">helm <span class="token function">install</span> my-release merly-mentor/merly-mentor <span class="token parameter variable">--set</span> <span class="token assign-left variable">global.registrationKey</span><span class="token operator">=</span><span class="token string">"your-registration-key-value"</span>
-</span></code><div onclick="copied(this)" data-code="helm install my-release merly-mentor/merly-mentor --set global.registrationKey=&#x22;your-registration-key-value&#x22;
-" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-    <h4 id="serve-merly-mentor-using-ingress"><a class="anchor" aria-hidden="true" tabindex="-1" href="#serve-merly-mentor-using-ingress"><span class="octicon octicon-link"></span></a>Serve Merly Mentor using ingress</h4>
-    <pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line line-number" line="1"><span class="token key atrule">global</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="2">  <span class="token key atrule">registrationKey</span><span class="token punctuation">:</span> <span class="token string">"your-registration-key-value"</span>
-</span><span class="code-line line-number" line="3"><span class="token key atrule">ingress</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="4">  <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-</span><span class="code-line line-number" line="5">  <span class="token key atrule">className</span><span class="token punctuation">:</span> <span class="token string">"nginx"</span>
-</span><span class="code-line line-number" line="6">  <span class="token key atrule">hosts</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="7">    <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> chart<span class="token punctuation">-</span>example.local
-</span><span class="code-line line-number" line="8">      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="9">        <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
-</span><span class="code-line line-number" line="10">          <span class="token key atrule">pathType</span><span class="token punctuation">:</span> ImplementationSpecific
-</span></code><div onclick="copied(this)" data-code="global:
-  registrationKey: &#x22;your-registration-key-value&#x22;
-ingress:
-  enabled: true
-  className: &#x22;nginx&#x22;
-  hosts:
-    - host: chart-example.local
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-    <h2 id="configuration"><a class="anchor" aria-hidden="true" tabindex="-1" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Parameter</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>nameOverride</code></td>
-          <td>Override the chart name</td>
-          <td><code>""</code></td>
-        </tr>
-        <tr>
-          <td><code>global.registrationKey</code></td>
-          <td>Registration key for global settings</td>
-          <td><code>''</code></td>
-        </tr>
-        <tr>
-          <td><code>global.persistence.storageClass</code></td>
-          <td>Storage class for persistent volume (optional)</td>
-          <td><code>"default"</code></td>
-        </tr>
-        <tr>
-          <td><code>global.persistence.size</code></td>
-          <td>Size of the persistent volume (optional)</td>
-          <td><code>"4Gi"</code></td>
-        </tr>
-        <tr>
-          <td><code>global.persistence.pvcNameOverride</code></td>
-          <td>PVC name override for persistence (optional)</td>
-          <td><code>"merly-mentor-pvc"</code></td>
-        </tr>
-        <tr>
-          <td><code>bridge.replicaCount</code></td>
-          <td>Number of replicas for the bridge service (optional)</td>
-          <td><code>1</code></td>
-        </tr>
-        <tr>
-          <td><code>bridge.nameOverride</code></td>
-          <td>Override the name for bridge service (optional)</td>
-          <td><code>"merly-bridge"</code></td>
-        </tr>
-        <tr>
-          <td><code>bridge.image.repository</code></td>
-          <td>Repository for the bridge image</td>
-          <td><code>merlyai/merly-mentor-bridge</code></td>
-        </tr>
-        <tr>
-          <td><code>bridge.image.tag</code></td>
-          <td>Tag for the bridge image</td>
-          <td><code>v0.5.0</code></td>
-        </tr>
-        <tr>
-          <td><code>bridge.containerPort</code></td>
-          <td>Container port for the bridge service (default)</td>
-          <td><code>8080</code></td>
-        </tr>
-        <tr>
-          <td><code>mentor.nameOverride</code></td>
-          <td>Override the name for mentor service (optional)</td>
-          <td><code>"merly-mentor"</code></td>
-        </tr>
-        <tr>
-          <td><code>mentor.replicaCount</code></td>
-          <td>Number of replicas for the mentor service</td>
-          <td><code>1</code></td>
-        </tr>
-        <tr>
-          <td><code>mentor.image.repository</code></td>
-          <td>Repository for the mentor image</td>
-          <td><code>merlyai/merly-mentor-daemon</code></td>
-        </tr>
-        <tr>
-          <td><code>mentor.image.tag</code></td>
-          <td>Tag for the mentor image</td>
-          <td><code>v0.6.0</code></td>
-        </tr>
-        <tr>
-          <td><code>mentor.containerPort</code></td>
-          <td>Container port for the mentor service</td>
-          <td><code>4200</code></td>
-        </tr>
-        <tr>
-          <td><code>mentor.initContainers.merlyModelsInit.image.repository</code></td>
-          <td>Repository for models init container</td>
-          <td><code>merlyai/merly-mentor-models</code></td>
-        </tr>
-        <tr>
-          <td><code>mentor.initContainers.merlyModelsInit.image.tag</code></td>
-          <td>Tag for models init container</td>
-          <td><code>v2.0.0</code></td>
-        </tr>
-        <tr>
-          <td><code>mentor.initContainers.merlyAssetsInit.image.repository</code></td>
-          <td>Repository for assets init container</td>
-          <td><code>merlyai/merly-mentor-assets</code></td>
-        </tr>
-        <tr>
-          <td><code>mentor.initContainers.merlyAssetsInit.image.tag</code></td>
-          <td>Tag for assets init container</td>
-          <td><code>v1.0.0</code></td>
-        </tr>
-        <tr>
-          <td><code>merlyUi.replicaCount</code></td>
-          <td>Number of replicas for the UI service</td>
-          <td><code>1</code></td>
-        </tr>
-        <tr>
-          <td><code>merlyUi.nameOverride</code></td>
-          <td>Override the name for UI service (optional)</td>
-          <td><code>"merly-ui"</code></td>
-        </tr>
-        <tr>
-          <td><code>merlyUi.image.repository</code></td>
-          <td>Repository for the UI image</td>
-          <td><code>merlyai/merly-mentor-ui</code></td>
-        </tr>
-        <tr>
-          <td><code>merlyUi.image.tag</code></td>
-          <td>Tag for the UI image</td>
-          <td><code>v0.5.0</code></td>
-        </tr>
-        <tr>
-          <td><code>merlyUi.containerPort</code></td>
-          <td>Container port for the UI service</td>
-          <td><code>3000</code></td>
-        </tr>
-        <tr>
-          <td><code>ingress.enabled</code></td>
-          <td>Enable or disable ingress</td>
-          <td><code>false</code></td>
-        </tr>
-        <tr>
-          <td><code>ingress.className</code></td>
-          <td>Class name for ingress</td>
-          <td><code>""</code></td>
-        </tr>
-        <tr>
-          <td><code>ingress.annotations</code></td>
-          <td>Annotations for ingress</td>
-          <td><code>{}</code></td>
-        </tr>
-        <tr>
-          <td><code>ingress.hosts[0].host</code></td>
-          <td>Host for ingress</td>
-          <td><code>chart-example.local</code></td>
-        </tr>
-        <tr>
-          <td><code>ingress.hosts[0].paths[0].path</code></td>
-          <td>Path for ingress</td>
-          <td><code>/</code></td>
-        </tr>
-        <tr>
-          <td><code>ingress.hosts[0].paths[0].pathType</code></td>
-          <td>Path type for ingress</td>
-          <td><code>ImplementationSpecific</code></td>
-        </tr>
-        <tr>
-          <td><code>ingress.tls[0].secretName</code></td>
-          <td>TLS secret name for ingress</td>
-          <td><code>chart-example-tls</code></td>
-        </tr>
-        <tr>
-          <td><code>ingress.tls[0].hosts[0]</code></td>
-          <td>TLS hosts for ingress</td>
-          <td><code>chart-example.local</code></td>
-        </tr>
-      </tbody>
-    </table>
+    <p>The code is offered as-is without any guarantees.</p><!-- 
+    ## Configuration
+    | Parameter                                        | Description                                         | Default                          |
+    |--------------------------------------------------|-----------------------------------------------------|----------------------------------|
+    | `nameOverride`                                   | Override the chart name                             | `""`                             |
+    | `global.registrationKey`                         | Registration key for global settings                | `''`                             |
+    | `global.persistence.storageClass`                | Storage class for persistent volume (optional)      | `"default"`                      |
+    | `global.persistence.size`                        | Size of the persistent volume (optional)            | `"4Gi"`                          |
+    | `global.persistence.pvcNameOverride`             | PVC name override for persistence (optional)        | `"merly-mentor-pvc"`             |
+    | `bridge.replicaCount`                            | Number of replicas for the bridge service (optional)| `1`                              |
+    | `bridge.nameOverride`                            | Override the name for bridge service (optional)     | `"merly-bridge"`                 |
+    | `bridge.image.repository`                        | Repository for the bridge image                     | `merlyai/bridge`                 |
+    | `bridge.image.tag`                               | Tag for the bridge image                            | `v0.7.2`                         |
+    | `bridge.containerPort`                           | Container port for the bridge service (default)     | `8080`                           |
+    | `mentor.nameOverride`                            | Override the name for mentor service (optional)     | `"merly-mentor"`                 |
+    | `mentor.replicaCount`                            | Number of replicas for the mentor service           | `1`                              |
+    | `mentor.image.repository`                        | Repository for the mentor image                     | `merlyai/daemon`                 |
+    | `mentor.image.tag`                               | Tag for the mentor image                            | `v0.7.6`                         |
+    | `mentor.containerPort`                           | Container port for the mentor service               | `4200`                           |
+    | `merlyUi.replicaCount`                           | Number of replicas for the UI service               | `1`                              |
+    | `merlyUi.nameOverride`                           | Override the name for UI service (optional)         | `"merly-ui"`                     |
+    | `merlyUi.image.repository`                       | Repository for the UI image                         | `merlyai/ui`                     |
+    | `merlyUi.image.tag`                              | Tag for the UI image                                | `v0.7.2`                         |
+    | `merlyUi.containerPort`                          | Container port for the UI service                   | `3000`                           |
+    | `ingress.enabled`                                | Enable or disable ingress                           | `false`                          |
+    | `ingress.className`                              | Class name for ingress                              | `""`                             |
+    | `ingress.annotations`                            | Annotations for ingress                             | `{}`                             |
+    | `ingress.hosts[0].host`                          | Host for ingress                                    | `chart-example.local`            |
+    | `ingress.hosts[0].paths[0].path`                 | Path for ingress                                    | `/`                              |
+    | `ingress.hosts[0].paths[0].pathType`             | Path type for ingress                               | `ImplementationSpecific`         |
+    | `ingress.tls[0].secretName`                      | TLS secret name for ingress                         | `merly-tls`                      |
+    | `ingress.tls[0].hosts[0]`                        | TLS hosts for ingress                               | `merly.local`                    |
+     -->
     <script>/*! @uiw/copy-to-clipboard v1.0.12 | MIT (c) 2021 Kenny Wang | https://github.com/uiwjs/copy-to-clipboard.git */
 !function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define(t):(e="undefined"!=typeof globalThis?globalThis:e||self).copyTextToClipboard=t()}(this,(function(){"use strict";return function(e,t){const o=document.createElement("textarea");o.value=e,o.setAttribute("readonly",""),o.style={position:"absolute",left:"-9999px"},document.body.appendChild(o);const n=document.getSelection().rangeCount>0&&document.getSelection().getRangeAt(0);o.select();let c=!1;try{c=!!document.execCommand("copy")}catch(e){c=!1}document.body.removeChild(o),n&&document.getSelection&&(document.getSelection().removeAllRanges(),document.getSelection().addRange(n)),t&&t(c)}}));
 
