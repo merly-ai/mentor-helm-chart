@@ -4,7 +4,7 @@
 ## Usage:
 
 ### Prerequisites
-This is a Helm char - you need to have Helm installed. For details on how to do that, please visit their website [Helm](https://helm.sh) 
+This is a Helm chart - you need to have Helm installed. For details on how to do that, please visit their website [Helm](https://helm.sh) 
 Additionally you will need a registration key which you can get through our early access website [Merly] (https://www.merly.ai/early-access)
 
 ### Adding the Merly Mentor Helm Repository
