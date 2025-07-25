@@ -27,7 +27,7 @@ mentor:
 merlyUi:
   image:
     repository: merlyai/ui
-    tag: v0.10.1
+    tag: v0.10.0
   service:
   
 ingress:
