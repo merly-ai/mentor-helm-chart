@@ -2,8 +2,8 @@ apiVersion: v2
 name: merly-mentor
 description: Helm chart for Merly Mentor
 type: application
-version: 1.0.15
-appVersion: "v0.11.0"
+version: 1.0.16
+appVersion: "v0.11.1"
 home: https://www.merly.ai/
 sources:
 - https://github.com/merly-ai/mentor-helm-chart
