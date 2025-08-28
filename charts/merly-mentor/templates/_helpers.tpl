@@ -23,7 +23,6 @@ If release name contains chart name it will be used as a full name.
 {{- end }}
 {{- end }}
 
-
 {{/*
 Create chart name and version as used by the chart label.
 */}}
@@ -42,114 +41,113 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 
-
-
-{{/* -------------bridge------------------ */}}
-{{/* -------------bridge------------------ */}}
-{{/* -------------bridge------------------ */}}
-
-{{- define "bridge.deployment.name" -}}
-{{- if and .Values.bridge .Values.bridge.nameOverride -}}
-{{ .Values.bridge.nameOverride | trunc 63 | trimSuffix "-" }}
-{{- else -}}
-{{ "merly-bridge" }}
-{{- end }}
-{{- end }}
-
-
+{{/*
+Bridge container image
+Used by the bridge sidecar container in mentor deployment
+*/}}
 {{- define "bridge.deployment.image" -}}
 {{- if and .Values.bridge .Values.bridge.image .Values.bridge.image.repository .Values.bridge.image.tag -}}
-  "{{ .Values.bridge.image.repository }}:{{ .Values.bridge.image.tag }}"
+{{- printf "%s:%s" .Values.bridge.image.repository .Values.bridge.image.tag }}
 {{- else -}}
-  {{- fail "A valid repository and tag are required! Ensure .Values.bridge.image.repository, and .Values.bridge.image.tag are properly set." -}}
+{{- fail "A valid repository and tag are required! Ensure .Values.bridge.image.repository, and .Values.bridge.image.tag are properly set." -}}
 {{- end -}}
 {{- end -}}
 
-
-{{- define "bridge.labels" -}}
-{{ include "merly-mentor.commonLabels" . }}
-merly.service.name: bridge
-merly.app.name: bridge
-{{- end }}
-
+{{/*
+Bridge service name
+*/}}
 {{- define "bridge.service.name" -}}
 {{- if and .Values.bridge .Values.bridge.service .Values.bridge.service.nameOverride -}}
-{{ .Values.bridge.service.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- .Values.bridge.service.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- else -}}
-{{ "merly-bridge" }}
+{{- "merly-bridge" }}
 {{- end }}
 {{- end }}
 
+{{/*
+Mentor deployment name
+*/}}
+{{- define "mentor.deployment.name" -}}
+{{- if and .Values.mentor .Values.mentor.nameOverride -}}
+{{- .Values.mentor.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- else -}}
+{{- "merly-mentor" }}
+{{- end }}
+{{- end }}
 
-{{/* -------------mentor------------------ */}}
-{{/* -------------mentor------------------ */}}
-{{/* -------------mentor------------------ */}}
-
+{{/*
+Mentor labels
+*/}}
 {{- define "mentor.labels" -}}
 {{ include "merly-mentor.commonLabels" . }}
+app.kubernetes.io/name: {{ include "mentor.deployment.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
 merly.service.name: mentor
 merly.app.name: mentor
 {{- end }}
 
-
-{{- define "mentor.deployment.name" -}}
-{{- if and .Values.mentor .Values.mentor.nameOverride -}}
-{{ .Values.mentor.nameOverride | trunc 63 | trimSuffix "-" }}
-{{- else -}}
-{{ "merly-mentor" }}
-{{- end }}
-{{- end }}
-
+{{/*
+Mentor service name
+*/}}
 {{- define "mentor.service.name" -}}
 {{- if and .Values.mentor .Values.mentor.service .Values.mentor.service.nameOverride -}}
-{{ .Values.mentor.service.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- .Values.mentor.service.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- else -}}
-{{ "merly-mentor" }}
+{{- "merly-mentor" }}
 {{- end }}
 {{- end }}
 
+{{/*
+Mentor container image
+*/}}
 {{- define "mentor.deployment.image" -}}
 {{- if and .Values.mentor .Values.mentor.image .Values.mentor.image.repository .Values.mentor.image.tag -}}
-  "{{ .Values.mentor.image.repository }}:{{ .Values.mentor.image.tag }}"
+{{- printf "%s:%s" .Values.mentor.image.repository .Values.mentor.image.tag }}
 {{- else -}}
-  {{- fail "A valid repository and tag are required! Ensure .Values.mentor.image.repository, and .Values.mentor.image.tag are properly set." -}}
+{{- fail "A valid repository and tag are required! Ensure .Values.mentor.image.repository, and .Values.mentor.image.tag are properly set." -}}
 {{- end -}}
 {{- end -}}
 
+{{/*
+UI deployment name
+*/}}
+{{- define "merlyUi.deployment.name" -}}
+{{- if and .Values.merlyUi .Values.merlyUi.nameOverride -}}
+{{- .Values.merlyUi.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- else -}}
+{{- "merly-ui" }}
+{{- end }}
+{{- end }}
 
-{{/* -------------ui------------------ */}}
-{{/* -------------ui------------------ */}}
-{{/* -------------ui------------------ */}}
-
+{{/*
+UI labels
+*/}}
 {{- define "merlyUi.labels" -}}
 {{ include "merly-mentor.commonLabels" . }}
+app.kubernetes.io/name: {{ include "merlyUi.deployment.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
 merly.service.name: merly-ui
 merly.app.name: merly-ui
 {{- end }}
 
-
-{{- define "merlyUi.deployment.name" -}}
-{{- if and .Values.merlyUi .Values.merlyUi.nameOverride -}}
-{{ .Values.merlyUi.nameOverride | trunc 63 | trimSuffix "-" }}
-{{- else -}}
-{{ "merly-ui" }}
-{{- end }}
-{{- end }}
-
+{{/*
+UI service name
+*/}}
 {{- define "merlyUi.service.name" -}}
 {{- if and .Values.merlyUi .Values.merlyUi.service .Values.merlyUi.service.nameOverride -}}
-{{ .Values.merlyUi.service.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- .Values.merlyUi.service.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- else -}}
-{{ "merly-ui" }}
+{{- "merly-ui" }}
 {{- end }}
 {{- end }}
 
+{{/*
+UI container image
+*/}}
 {{- define "merlyUi.deployment.image" -}}
 {{- if and .Values.merlyUi .Values.merlyUi.image .Values.merlyUi.image.repository .Values.merlyUi.image.tag -}}
-  "{{ .Values.merlyUi.image.repository }}:{{ .Values.merlyUi.image.tag }}"
+{{- printf "%s:%s" .Values.merlyUi.image.repository .Values.merlyUi.image.tag }}
 {{- else -}}
-  {{- fail "A valid repository and tag are required! Ensure .Values.merlyUi.image.repository, and .Values.merlyUi.image.tag are properly set." -}}
+{{- fail "A valid repository and tag are required! Ensure .Values.merlyUi.image.repository, and .Values.merlyUi.image.tag are properly set." -}}
 {{- end -}}
 {{- end -}}
-
-
