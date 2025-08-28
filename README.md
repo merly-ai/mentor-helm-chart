@@ -1,43 +1,51 @@
 # Merly Mentor Kubernetes Helm Charts
-#### Thank you for trying our Helm chart of Mentor!
 
-## Usage:
+#### Thank you for trying our Helm chart of Mentor
+
+## Usage
 
 ### Prerequisites
-This is a Helm chart - you need to have Helm installed. For details on how to do that, please visit their website [Helm](https://helm.sh) 
-Additionally you will need a registration key which you can get through our early access website [Merly] (https://www.merly.ai/early-access)
+
+This is a Helm chart - you need to have Helm installed. For details on how to do that, please visit their website [Helm](https://helm.sh)
+Additionally you will need a registration key which you can get through our early access website [Merly] (<https://www.merly.ai/early-access>)
 
 ### Adding the Merly Mentor Helm Repository
-You can add the `merly-mentor` Helm repository 
+
+You can add the `merly-mentor` Helm repository
 
 ```bash
 helm repo add merly-mentor https://charts.merly-mentor.ai
 ```
+
 Then look for available charts
+
 ```bash
 helm search repo merly-mentor
 ```
+
 And finally install the chart with a release name `mentor` (but really could be anything you prefer):
+
 ```bash
 helm install my-release merly-mentor/merly-mentor --set global.registrationKey="<replace-with-your-product-
 ```
 
-The alternative is to download or git clone the repositry and manually install the chart 
+The alternative is to download or git clone the repositry and manually install the chart
+
 ```bash
 helm install mentor ./ --set global.registrationKey="<replace-with-your-product-key"
 ```
-The only caviat is you need to be in the right folder `charts/merly-mentor`
 
+The only caveat is you need to be in the right folder `charts/merly-mentor`
 
 ## Uninstalling the Chart
+
 To uninstall/delete the `my-release` deployment:
 
 ```bash
 helm uninstall merly-mentor
 ```
+
 The command removes all the Kubernetes components associated with the chart and deletes the release.
-
-
 
 The code is offered as-is without any guarantees.
 <!-- 
