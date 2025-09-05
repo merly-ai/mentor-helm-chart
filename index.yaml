@@ -3,6 +3,19 @@ entries:
   merly-mentor:
   - apiVersion: v2
     appVersion: v0.11.1
+    created: "2025-09-05T15:32:15.603872468Z"
+    description: Helm chart for Merly Mentor
+    digest: 568975ec17e975cfb840d2073fec5ef30f242b044b7173e77af16cde4564972a
+    home: https://www.merly.ai/
+    name: merly-mentor
+    sources:
+    - https://github.com/merly-ai/mentor-helm-chart
+    type: application
+    urls:
+    - https://github.com/merly-ai/mentor-helm-chart/releases/download/merly-mentor-1.0.17/merly-mentor-1.0.17.tgz
+    version: 1.0.17
+  - apiVersion: v2
+    appVersion: v0.11.1
     created: "2025-08-28T12:26:56.620988989Z"
     description: Helm chart for Merly Mentor
     digest: 376e94963a08406d711e897765d17dea4247778f28afb2a53c2838f3383853f3
@@ -173,4 +186,4 @@ entries:
     urls:
     - https://github.com/merly-ai/mentor-helm-chart/releases/download/merly-mentor-1.0.0/merly-mentor-1.0.0.tgz
     version: 1.0.0
-generated: "2025-08-28T12:26:56.621093195Z"
+generated: "2025-09-05T15:32:15.603994035Z"
