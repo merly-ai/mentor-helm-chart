@@ -41,7 +41,7 @@ On Windows via [Chocolatey](https://chocolatey.org/packages/kind)
 choco install kind
 ```
 
-On Windoes via [Winget](https://github.com/microsoft/winget-pkgs/tree/master/manifests/k/Kubernetes/kind)
+On Windows via [Winget](https://github.com/microsoft/winget-pkgs/tree/master/manifests/k/Kubernetes/kind)
 
 ```
 winget install Kubernetes.kind
@@ -161,7 +161,7 @@ And finally install the chart with a release name `mentor` (but really could be 
 helm install my-release merly-mentor/merly-mentor --set global.registrationKey="<replace-with-your-product-key>"
 ```
 
-The alternative is to download or git clone the repositry and manually install the chart
+The alternative is to download or git clone the repository and manually install the chart
 
 ```bash
 helm install mentor ./ --set global.registrationKey="<replace-with-your-product-key>"
@@ -174,7 +174,7 @@ The only caveat is you need to be in the right folder `charts/merly-mentor`
 To uninstall/delete the `my-release` deployment:
 
 ```bash
-helm uninstall merly-mentor
+helm uninstall my-release
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
