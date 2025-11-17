@@ -6,13 +6,13 @@ global:
 bridge:
   image:
     repository: merlyai/bridge
-    tag: v0.13.0
+    tag: v0.16.1
 
 mentor:
   image:
     repository: merlyai/mentor
     pullPolicy: Always
-    tag: v0.13.0
+    tag: v0.16.1
     resources:
     limits:
       cpu: "8"
@@ -27,7 +27,7 @@ mentor:
 merlyUi:
   image:
     repository: merlyai/ui
-    tag: v0.13.0
+    tag: v0.16.1
   service:
 
 ingress:
