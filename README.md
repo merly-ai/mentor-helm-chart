@@ -158,7 +158,7 @@ helm search repo merly-mentor
 And finally install the chart with a release name `mentor` (but really could be anything you prefer):
 
 ```bash
-helm install my-release merly-mentor/merly-mentor --set global.registrationKey="<replace-with-your-product-key>"
+helm install my-release merly-mentor/merly-mentor --set global.registrationKey="<replace-with-your-product-key>" --set size=small
 ```
 
 The alternative is to download or git clone the repository and manually install the chart

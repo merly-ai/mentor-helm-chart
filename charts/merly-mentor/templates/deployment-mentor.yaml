@@ -5,6 +5,10 @@ metadata:
   labels:
     {{- include "mentor.labels" . | nindent 4 }}
 spec:
+  {{- $size := .Values.size | default "small" }}
+  {{- $profile := index .Values.profiles $size }}
+  {{- $resources := $profile.resources }}
+
   replicas: {{ if and .Values.mentor .Values.mentor.replicaCount }}{{ .Values.mentor.replicaCount }}{{ else }}1{{ end }}
   selector:
     matchLabels:
@@ -31,12 +35,7 @@ spec:
             - {{ . | quote }}
             {{- end }}
           resources:
-            requests:
-              memory: "4Gi"
-              cpu: "2"
-            limits:
-              memory: "16Gi"
-              cpu: "12"
+            {{- toYaml $resources | nindent 12 }}
           volumeMounts:
             - mountPath: /app/.mentor
               name: mentor-data
@@ -46,8 +45,7 @@ spec:
               name: assets-data
             - mountPath: /app/.logs
               name: logs-data
-            
-              
+
         - name: bridge-container
           image: {{ include "bridge.deployment.image" . }}
           ports:
@@ -55,6 +53,8 @@ spec:
           env:
             - name: MERLY_AI_DAEMON_URL
               value: "http://{{ include "mentor.service.name" . }}:{{ if and .Values.mentor .Values.mentor.service .Values.mentor.service.port }}{{ .Values.mentor.service.port }}{{ else }}4200{{ end }}/"
+          resources:
+            {{- toYaml $resources | nindent 12 }}
           volumeMounts:
             - mountPath: /app/.mentor
               name: mentor-data
